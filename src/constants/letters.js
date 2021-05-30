@@ -1,1 +1,0 @@
-export const LETTERS = Array.from('ABCDEFGHIJKLMNOPQRSTUVWXYZ');
