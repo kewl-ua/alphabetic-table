@@ -1,8 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import jss from 'jss';
+import preset from 'jss-preset-default';
+import jssNestedPlugin from 'jss-plugin-nested';
+
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+
+import './index.css';
+
+import reportWebVitals from './reportWebVitals'
+
+jss.setup(preset()); 
+jss.use(jssNestedPlugin());;
 
 ReactDOM.render(
   <React.StrictMode>
