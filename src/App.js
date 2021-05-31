@@ -6,6 +6,7 @@ import store from './redux/store';
 
 import Home from './pages/Home';
 import Employees from './pages/Employees';
+import NotFound from './pages/NotFound';
 
 const App = () => {
   return (
@@ -17,8 +18,12 @@ const App = () => {
               <Home />
             </Route>
 
-            <Route path="/employees">
+            <Route exact path="/employees">
               <Employees />
+            </Route>
+
+            <Route status={404}>
+              <NotFound />
             </Route>
           </Switch>
         </Router>
