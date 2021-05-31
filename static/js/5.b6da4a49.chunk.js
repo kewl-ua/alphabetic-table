@@ -1,0 +1,2 @@
+(this.webpackJsonpyalantis=this.webpackJsonpyalantis||[]).push([[5],{62:function(e,s,t){"use strict";t.r(s);t(0);var n=t(33),c=t(3);s.default=function(){return Object(c.jsx)("nav",{children:Object(c.jsx)("ul",{children:Object(c.jsx)("li",{children:Object(c.jsx)(n.b,{to:"/employees",children:"Employees"})})})})}}}]);
+//# sourceMappingURL=5.b6da4a49.chunk.js.map
