@@ -7,13 +7,15 @@ import store from './redux/store';
 
 import Employees from './pages/Employees';
 
+const GHUB_BASE_URL = '/alphabetic-table';
+
 const App = () => {
   return (
     <div className="App">
       <Provider store={store}>
         <Router>
           <Switch>
-            <Route path="/employees">
+            <Route path={`${GHUB_BASE_URL}/employees`}>
               <Employees />
             </Route>
           </Switch>
