@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 
 import AlphabeticEmployeeItem from '../AlphabeticEmployeeItem';
 
-import alphabeticEmployeesShape from '../../shapes/alphabeticEmployees';
+import { alphabeticEmployee as alphabeticEmployeesShape } from '../../shapes';
 
 import useStyles from './styles';
 

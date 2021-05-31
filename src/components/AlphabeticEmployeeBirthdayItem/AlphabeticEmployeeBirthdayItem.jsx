@@ -5,9 +5,9 @@ import useStyles from './styles';
 
 import { MONTHS } from '../../constants';
 
-import { parseDateOfBirth, getMonthName } from '../../helpers/employee';
+import { parseDateOfBirth, getMonthName } from '../../helpers';
 
-import employeeShape from '../../shapes/employee';
+import { employee as employeeShape } from '../../shapes';
 
 const AlphabeticEmployeeBirthdayItem = ({ month, employees }) => {
   const classes = useStyles();

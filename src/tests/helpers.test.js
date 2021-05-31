@@ -1,9 +1,5 @@
 import { DO_NOT_SWAP } from '../constants';
-import {
-  lastNamePredicate,
-  getMonthName,
-  parseDateOfBirth,
-} from '../helpers/employee';
+import { lastNamePredicate, getMonthName, parseDateOfBirth } from '../helpers';
 
 test('Providing a month number gives the month name', () => {
   expect(getMonthName(1)).toBe('January');

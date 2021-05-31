@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 
 import AlphabeticEmployeeBirthdayItem from '../AlphabeticEmployeeBirthdayItem';
 
-import employeesByMonthShape from '../../shapes/employeesByMonth';
+import { employeeByMonth as employeesByMonthShape } from '../../shapes';
 
 import useStyles from './styles';
 

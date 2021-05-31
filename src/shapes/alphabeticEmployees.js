@@ -4,8 +4,8 @@ import employeeShape from './employee';
 
 import { LETTERS } from '../constants';
 
-const lettersEmployeesEntries = LETTERS.map((l) => [
-  l,
+const lettersEmployeesEntries = LETTERS.map((letter) => [
+  letter,
   PropTypes.arrayOf(employeeShape),
 ]);
 

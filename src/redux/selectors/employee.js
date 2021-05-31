@@ -3,7 +3,7 @@ import {
   lastNamePredicate,
   createLettersMap,
   parseDateOfBirth,
-} from '../../helpers/employee';
+} from '../../helpers';
 
 // Selectors
 export const employeesSelector = (state) => state.employee.employees;

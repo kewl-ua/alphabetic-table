@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import AlphabeticEmployeeSwitcher from '../AlphabeticEmployeeSwitcher';
 
-import employeeShape from '../../shapes/employee';
+import { employee as employeeShape } from '../../shapes';
 
 import useStyles from './styles';
 

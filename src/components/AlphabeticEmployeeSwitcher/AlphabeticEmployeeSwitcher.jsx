@@ -4,7 +4,7 @@ import clsx from 'clsx';
 
 import { selectEmployee, unselectEmployee } from '../../redux/slices/employee';
 
-import employeeShape from '../../shapes/employee';
+import { employee as employeeShape } from '../../shapes';
 
 import useStyles from './styles';
 
