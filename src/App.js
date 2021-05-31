@@ -1,32 +1,34 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 
 import store from './redux/store';
 
-import Home from './pages/Home';
-import Employees from './pages/Employees';
-import NotFound from './pages/NotFound';
+const Home = React.lazy(() => import('./pages/Home'));
+const Employees = React.lazy(() => import('./pages/Employees'));
+const NotFound = React.lazy(() => import('./pages/NotFound'));
 
 const App = () => {
   return (
     <div className="App">
       <Provider store={store}>
-        <Router basename={process.env.PUBLIC_URL}>
-          <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Router basename={process.env.PUBLIC_URL}>
+            <Switch>
+              <Route exact path="/">
+                <Home />
+              </Route>
 
-            <Route exact path="/employees">
-              <Employees />
-            </Route>
+              <Route exact path="/employees">
+                <Employees />
+              </Route>
 
-            <Route status={404}>
-              <NotFound />
-            </Route>
-          </Switch>
-        </Router>
+              <Route status={404}>
+                <NotFound />
+              </Route>
+            </Switch>
+          </Router>
+        </Suspense>
       </Provider>
     </div>
   );
