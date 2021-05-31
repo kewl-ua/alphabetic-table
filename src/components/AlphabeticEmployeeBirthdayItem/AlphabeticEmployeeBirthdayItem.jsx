@@ -33,8 +33,7 @@ const AlphabeticEmployeeBirthdayItem = ({ month, employees }) => {
 
   return (
     <li className={classes.root} key={month}>
-      <h3 className={classes.month}>{getMonthName(month)}</h3>
-
+      <h3 className={classes.month}>{MONTHS[month]}</h3>
       <ul className={classes.dobList}>{items}</ul>
     </li>
   );
