@@ -1,21 +1,23 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import store from './redux/store';
 
+import Home from './pages/Home';
 import Employees from './pages/Employees';
-
-const GHUB_BASE_URL = '/alphabetic-table';
 
 const App = () => {
   return (
     <div className="App">
       <Provider store={store}>
-        <Router>
+        <Router basename={process.env.PUBLIC_URL}>
           <Switch>
-            <Route path={`${GHUB_BASE_URL}/employees`}>
+            <Route exact path="/">
+              <Home />
+            </Route>
+
+            <Route path="/employees">
               <Employees />
             </Route>
           </Switch>
