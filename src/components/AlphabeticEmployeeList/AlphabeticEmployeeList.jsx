@@ -1,15 +1,16 @@
 import React, { useMemo } from 'react';
-import PropTypes from 'prop-types';
 
 import AlphabeticEmployeeItem from '../AlphabeticEmployeeItem';
 
+import alphabeticEmployeesShape from '../../shapes/alphabeticEmployees';
+
 import useStyles from './styles';
 
-const AlphabeticEmployeeList = ({ alphabeticEmployees = [] }) => {
+const AlphabeticEmployeeList = ({ alphabeticEmployees }) => {
   const classes = useStyles();
   const items = useMemo(
     () =>
-      alphabeticEmployees.map(([letter, lEmployees]) => (
+      Object.entries(alphabeticEmployees).map(([letter, lEmployees]) => (
         <AlphabeticEmployeeItem
           key={letter}
           letter={letter}
@@ -23,7 +24,7 @@ const AlphabeticEmployeeList = ({ alphabeticEmployees = [] }) => {
 };
 
 AlphabeticEmployeeList.propTypes = {
-  alphabeticEmployees: PropTypes.array,
+  alphabeticEmployees: alphabeticEmployeesShape,
 };
 
 export default AlphabeticEmployeeList;

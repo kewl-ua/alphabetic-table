@@ -4,6 +4,8 @@ import clsx from 'clsx';
 
 import { selectEmployee, unselectEmployee } from '../../redux/slices/employee';
 
+import employeeShape from '../../shapes/employee';
+
 import useStyles from './styles';
 
 const SPACE_KEY_CODE = 32;
@@ -102,6 +104,10 @@ const AlphabeticEmployeeSwitcher = ({ employee }) => {
       </div>
     </fieldset>
   );
+};
+
+AlphabeticEmployeeSwitcher.propTypes = {
+  employee: employeeShape,
 };
 
 export default AlphabeticEmployeeSwitcher;

@@ -20,7 +20,11 @@ const useStyles = createUseStyles({
   root: {
     padding: 30,
   },
+  alphaSection: {
+    width: '75%',
+  },
   birthdaySection: {
+    width: '25%',
     borderLeft: '2px solid #666',
   },
 });
@@ -40,19 +44,15 @@ const Employees = () => {
       <AlphabeticTable>
         <AlphabeticTableHead>
           <AlphabeticTableHeading>Employees</AlphabeticTableHeading>
-
           <AlphabeticTableHeading>Employees birthday</AlphabeticTableHeading>
         </AlphabeticTableHead>
 
         <AlphabeticTableBody>
-          <AlphabeticTableSection width="75%">
+          <AlphabeticTableSection>
             <AplhabeticEmployeeList alphabeticEmployees={alphabeticEmployees} />
           </AlphabeticTableSection>
 
-          <AlphabeticTableSection
-            width="25%"
-            className={classes.birthdaySection}
-          >
+          <AlphabeticTableSection className={classes.birthdaySection}>
             <AlphabeticEmployeeBirthdayList
               employeesByMonth={groupedByMonthEmployees}
             />

@@ -1,12 +1,16 @@
 import React, { memo } from 'react';
+import PropTypes from 'prop-types';
 
 import useStyles from './styles';
 
+import { MONTHS } from '../../constants';
+
 import { parseDateOfBirth, getMonthName } from '../../helpers/employee';
 
-const AlphabeticEmployeeBirthdayItem = ({ employeeByMonth }) => {
+import employeeShape from '../../shapes/employee';
+
+const AlphabeticEmployeeBirthdayItem = ({ month, employees }) => {
   const classes = useStyles();
-  const [month, employees] = employeeByMonth;
   const items = employees.map((employee) => {
     const {
       day: bDay,
@@ -34,6 +38,11 @@ const AlphabeticEmployeeBirthdayItem = ({ employeeByMonth }) => {
       <ul className={classes.dobList}>{items}</ul>
     </li>
   );
+};
+
+AlphabeticEmployeeBirthdayItem.propTypes = {
+  month: PropTypes.oneOf(Object.keys(MONTHS)),
+  employees: PropTypes.arrayOf(employeeShape),
 };
 
 export default memo(AlphabeticEmployeeBirthdayItem);

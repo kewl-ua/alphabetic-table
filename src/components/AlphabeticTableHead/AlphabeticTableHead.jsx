@@ -1,4 +1,5 @@
 import React, { memo } from 'react';
+import PropTypes from 'prop-types';
 
 import useStyles from './styles';
 
@@ -10,6 +11,10 @@ const AlphabeticTableHead = ({ children }) => {
       <tr className={classes.inner}>{children}</tr>
     </thead>
   );
+};
+
+AlphabeticTableHead.propTypes = {
+  children: PropTypes.node,
 };
 
 export default memo(AlphabeticTableHead);

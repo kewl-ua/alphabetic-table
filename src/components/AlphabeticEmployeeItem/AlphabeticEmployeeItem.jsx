@@ -26,7 +26,7 @@ const AlphabeticEmployeeItem = ({ letter, employees = [] }) => {
 
 AlphabeticEmployeeItem.propTypes = {
   letter: PropTypes.string.isRequired,
-  employees: PropTypes.arrayOf(PropTypes.shape(employeeShape)),
+  employees: PropTypes.arrayOf(employeeShape),
 };
 
 export default AlphabeticEmployeeItem;

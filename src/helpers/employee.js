@@ -1,17 +1,21 @@
-import { DO_SWAP, DO_NOT_SWAP } from '../constants/sort';
-import { MONTHS } from '../constants/date';
-import { LETTERS } from '../constants/letters';
+import { DO_SWAP, DO_NOT_SWAP, MONTHS, LETTERS } from '../constants';
 
 const lastNamePredicate = (a, b) =>
   a.lastName.toUpperCase() > b.lastName.toUpperCase() ? DO_SWAP : DO_NOT_SWAP;
 
-export const getEmployeesAlphaEntries = (employees) => {
-  const sortedEmployees = [...employees].sort(lastNamePredicate);
+export const createLettersMap = () => {
   const lettersMap = {};
 
   for (const l of LETTERS) {
     lettersMap[l] = [];
   }
+
+  return lettersMap;
+};
+
+export const getEmployeesAlphaMap = (employees) => {
+  const sortedEmployees = [...employees].sort(lastNamePredicate);
+  const lettersMap = createLettersMap();
 
   for (const employee of sortedEmployees) {
     const letter = employee.lastName[0].toUpperCase();
@@ -19,7 +23,7 @@ export const getEmployeesAlphaEntries = (employees) => {
     lettersMap[letter].push(employee);
   }
 
-  return Object.entries(lettersMap);
+  return lettersMap;
 };
 
 // Date of birth
@@ -29,7 +33,7 @@ export const getMonthName = (monthNumber) => MONTHS[monthNumber - 1];
 
 export const parseDateOfBirth = (dob) => dob.match(datePattern)?.groups;
 
-export const getEmployeesMonthEntries = (employees) => {
+export const getEmployeesMonthsMap = (employees) => {
   const monthEmployeesBirthdaysMap = {};
 
   for (const employee of employees) {
@@ -42,5 +46,5 @@ export const getEmployeesMonthEntries = (employees) => {
     }
   }
 
-  return Object.entries(monthEmployeesBirthdaysMap);
+  return monthEmployeesBirthdaysMap;
 };

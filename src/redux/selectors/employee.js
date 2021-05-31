@@ -1,19 +1,21 @@
 import { createSelector } from '@reduxjs/toolkit';
 import {
-  getEmployeesAlphaEntries,
-  getEmployeesMonthEntries,
+  getEmployeesAlphaMap,
+  getEmployeesMonthsMap,
 } from '../../helpers/employee';
 
 // Selectors
 export const employeesSelector = (state) => state.employee.employees;
+
 export const selectedEmployeesIdsSelector = (state) =>
   state.employee.selectedEmployeesIds;
 
 // Reselectors
 export const alphabeticEmployeesSelector = createSelector(
   employeesSelector,
-  (employees) => getEmployeesAlphaEntries(employees)
+  (employees) => getEmployeesAlphaMap(employees)
 );
+
 export const selectedEmployeesSelector = createSelector(
   employeesSelector,
   selectedEmployeesIdsSelector,
@@ -23,5 +25,5 @@ export const selectedEmployeesSelector = createSelector(
 
 export const groupedByMonthEmployeesSelector = createSelector(
   selectedEmployeesSelector,
-  (selectedEmployees) => getEmployeesMonthEntries(selectedEmployees)
+  (selectedEmployees) => getEmployeesMonthsMap(selectedEmployees)
 );
