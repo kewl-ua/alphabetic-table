@@ -9,7 +9,7 @@ import useStyles from './styles';
 
 const AlphabeticEmployeeItem = ({ letter, employees = [] }) => {
   const classes = useStyles();
-  const employeeSwitchers = employees.map(employee => (
+  const employeeSwitchers = employees.map((employee) => (
     <AlphabeticEmployeeSwitcher key={employee.id} employee={employee} />
   ));
 
@@ -26,9 +26,7 @@ const AlphabeticEmployeeItem = ({ letter, employees = [] }) => {
 
 AlphabeticEmployeeItem.propTypes = {
   letter: PropTypes.string.isRequired,
-  employees: PropTypes.arrayOf(
-    PropTypes.shape(employeeShape)
-  )
+  employees: PropTypes.arrayOf(PropTypes.shape(employeeShape)),
 };
 
 export default AlphabeticEmployeeItem;

@@ -9,8 +9,8 @@ const useStyles = createUseStyles({
     display: 'flex',
     flexDirection: 'column',
     '& + &': {
-      marginTop: 30
-    }
+      marginTop: 30,
+    },
   },
   legend: {
     display: 'table',
@@ -20,11 +20,11 @@ const useStyles = createUseStyles({
     fontWeight: 600,
     width: '100%',
     '& + *': {
-      clear: 'both'
-    }
+      clear: 'both',
+    },
   },
   legendActive: {
-    color: '#00f'
+    color: '#00f',
   },
   label: {
     width: '1em',
@@ -32,24 +32,24 @@ const useStyles = createUseStyles({
     display: 'inline-block',
     cursor: 'pointer',
     border: '1px solid',
-    borderRadius: '50%'
+    borderRadius: '50%',
   },
   labelText: {
-    marginLeft: 5
+    marginLeft: 5,
   },
   inputWrapper: {
     display: 'inline-flex',
     alignItems: 'center',
     marginTop: 10,
-    cursor: 'pointer'
+    cursor: 'pointer',
   },
   input: {
     display: 'none',
     '&:checked + label': {
       backgroundColor: '#000000',
-      boxShadow: 'inset 0 0 0 2px #ffffff'
-    }
-  }
+      boxShadow: 'inset 0 0 0 2px #ffffff',
+    },
+  },
 });
 
 export default useStyles;

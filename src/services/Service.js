@@ -1,7 +1,7 @@
 const httpMethods = {
   GET: 'GET',
   POST: 'POST',
-  PUT: 'PUT'
+  PUT: 'PUT',
 };
 
 class Service {
@@ -14,8 +14,8 @@ class Service {
     const options = {
       method,
       headers: {
-        contentType: 'application/json'
-      }
+        contentType: 'application/json',
+      },
     };
 
     if (method === httpMethods.POST || method === httpMethods.PUT) {
@@ -26,23 +26,19 @@ class Service {
   }
 
   async list() {
-    return this.request()
-      .then(res => res.json());
+    return this.request().then((res) => res.json());
   }
 
   async entity(id) {
-    return this.request(id)
-      .then(res => res.json());
+    return this.request(id).then((res) => res.json());
   }
 
   async create(data) {
-    return this.request('', httpMethods.POST, data)
-      .then(res => res.json());
+    return this.request('', httpMethods.POST, data).then((res) => res.json());
   }
 
   async update(id, data) {
-    return this.request(id, httpMethods.PUT, data)
-      .then(res => res.json());
+    return this.request(id, httpMethods.PUT, data).then((res) => res.json());
   }
 }
 

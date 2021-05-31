@@ -6,8 +6,8 @@ const useStyles = createUseStyles({
     gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
     gridGap: 20,
     listStyle: 'none',
-    padding: 0
-  }
+    padding: 0,
+  },
 });
 
 export default useStyles;

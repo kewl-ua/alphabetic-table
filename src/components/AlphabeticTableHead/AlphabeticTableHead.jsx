@@ -7,9 +7,7 @@ const AlphabeticTableHead = ({ children }) => {
 
   return (
     <thead className={classes.root}>
-      <tr className={classes.inner}>
-        {children}
-      </tr>
+      <tr className={classes.inner}>{children}</tr>
     </thead>
   );
 };

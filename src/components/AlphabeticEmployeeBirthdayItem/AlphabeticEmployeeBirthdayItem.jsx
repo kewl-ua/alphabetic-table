@@ -8,7 +8,11 @@ const AlphabeticEmployeeBirthdayItem = ({ employeeByMonth }) => {
   const classes = useStyles();
   const [month, employees] = employeeByMonth;
   const items = employees.map((employee) => {
-    const { day: bDay, month: bMonth, year: bYear } = parseDateOfBirth(employee.dob);
+    const {
+      day: bDay,
+      month: bMonth,
+      year: bYear,
+    } = parseDateOfBirth(employee.dob);
 
     return (
       <li className={classes.dobItem} key={employee.id}>
@@ -25,13 +29,9 @@ const AlphabeticEmployeeBirthdayItem = ({ employeeByMonth }) => {
 
   return (
     <li className={classes.root} key={month}>
-      <h3 className={classes.month}>
-        {getMonthName(month)}
-      </h3>
+      <h3 className={classes.month}>{getMonthName(month)}</h3>
 
-      <ul className={classes.dobList}>  
-        {items}
-      </ul>
+      <ul className={classes.dobList}>{items}</ul>
     </li>
   );
 };

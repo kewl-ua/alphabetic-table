@@ -5,11 +5,7 @@ import useStyles from './styles';
 const AlphabeticTable = ({ children }) => {
   const classes = useStyles();
 
-  return (
-    <table className={classes.root}>
-      {children}
-    </table>
-  );
+  return <table className={classes.root}>{children}</table>;
 };
 
 export default memo(AlphabeticTable);

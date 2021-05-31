@@ -8,10 +8,10 @@ import App from './App';
 
 import './index.css';
 
-import reportWebVitals from './reportWebVitals'
+import reportWebVitals from './reportWebVitals';
 
-jss.setup(preset()); 
-jss.use(jssNestedPlugin());;
+jss.setup(preset());
+jss.use(jssNestedPlugin());
 
 ReactDOM.render(
   <React.StrictMode>

@@ -1,8 +1,15 @@
-import { createSlice, createAsyncThunk, createSelector } from '@reduxjs/toolkit';
+import {
+  createSlice,
+  createAsyncThunk,
+  createSelector,
+} from '@reduxjs/toolkit';
 
 import { EmployeeService } from '../../services';
 
-import { getEmployeesAlphaEntries, getEmployeesMonthEntries } from '../../helpers/employee';
+import {
+  getEmployeesAlphaEntries,
+  getEmployeesMonthEntries,
+} from '../../helpers/employee';
 
 // Async thunks
 export const fetchEmployees = createAsyncThunk(
@@ -22,7 +29,7 @@ const slice = createSlice({
   name: 'employee',
   initialState: {
     employees: [],
-    selectedEmployeesIds: []
+    selectedEmployeesIds: [],
   },
   reducers: {
     setEmployees: (state, action) => {
@@ -32,36 +39,38 @@ const slice = createSlice({
       state.selectedEmployeesIds.push(action.payload.id);
     },
     unselectEmployee: (state, action) => {
-      state.selectedEmployeesIds = state.selectedEmployeesIds
-        .filter(seId => seId !== action.payload.id);
-    }
+      state.selectedEmployeesIds = state.selectedEmployeesIds.filter(
+        (seId) => seId !== action.payload.id
+      );
+    },
   },
   extraReducers: {
     [fetchEmployees.fulfilled]: (state, action) => {
       state.employees = action.payload.employees;
-    }
-  }
+    },
+  },
 });
 
 // Selectors
-export const employeesSelector = state => state.employee.employees;
-export const selectedEmployeesIdsSelector = state => state.employee.selectedEmployeesIds;
+export const employeesSelector = (state) => state.employee.employees;
+export const selectedEmployeesIdsSelector = (state) =>
+  state.employee.selectedEmployeesIds;
 
 // Reselectors
 export const alphabeticEmployeesSelector = createSelector(
   employeesSelector,
-  employees => getEmployeesAlphaEntries(employees)
+  (employees) => getEmployeesAlphaEntries(employees)
 );
 export const selectedEmployeesSelector = createSelector(
   employeesSelector,
   selectedEmployeesIdsSelector,
-  (employees, selectedEmployeesIds) => employees
-    .filter(employee => selectedEmployeesIds.includes(employee.id))
+  (employees, selectedEmployeesIds) =>
+    employees.filter((employee) => selectedEmployeesIds.includes(employee.id))
 );
 
 export const groupedByMonthEmployeesSelector = createSelector(
   selectedEmployeesSelector,
-  selectedEmployees => getEmployeesMonthEntries(selectedEmployees)
+  (selectedEmployees) => getEmployeesMonthEntries(selectedEmployees)
 );
 
 // Actions

@@ -1,17 +1,13 @@
 import { createUseStyles } from 'react-jss';
 
 const useStyles = createUseStyles({
-  root: {
-
-  },
+  root: {},
   title: {
     padding: '0 10px',
     fontSize: 25,
-    margin: '10px 0'
+    margin: '10px 0',
   },
-  switchers: {
-
-  }
+  switchers: {},
 });
 
 export default useStyles;

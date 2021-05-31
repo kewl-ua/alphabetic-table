@@ -13,16 +13,16 @@ import AlphabeticEmployeeBirthdayList from '../components/AlphabeticEmployeeBirt
 import {
   fetchEmployees,
   alphabeticEmployeesSelector,
-  groupedByMonthEmployeesSelector
+  groupedByMonthEmployeesSelector,
 } from '../redux/slices/employee';
 
 const useStyles = createUseStyles({
   root: {
-    padding: 30
+    padding: 30,
   },
   birthdaySection: {
-    borderLeft: '2px solid #666'
-  }
+    borderLeft: '2px solid #666',
+  },
 });
 
 const Employees = () => {
@@ -39,13 +39,9 @@ const Employees = () => {
     <div className={classes.root}>
       <AlphabeticTable>
         <AlphabeticTableHead>
-          <AlphabeticTableHeading>
-            Employees
-          </AlphabeticTableHeading>
+          <AlphabeticTableHeading>Employees</AlphabeticTableHeading>
 
-          <AlphabeticTableHeading>
-            Employees birthday
-          </AlphabeticTableHeading>
+          <AlphabeticTableHeading>Employees birthday</AlphabeticTableHeading>
         </AlphabeticTableHead>
 
         <AlphabeticTableBody>
@@ -53,8 +49,13 @@ const Employees = () => {
             <AplhabeticEmployeeList alphabeticEmployees={alphabeticEmployees} />
           </AlphabeticTableSection>
 
-          <AlphabeticTableSection width="25%" className={classes.birthdaySection}>
-            <AlphabeticEmployeeBirthdayList employeesByMonth={groupedByMonthEmployees} />
+          <AlphabeticTableSection
+            width="25%"
+            className={classes.birthdaySection}
+          >
+            <AlphabeticEmployeeBirthdayList
+              employeesByMonth={groupedByMonthEmployees}
+            />
           </AlphabeticTableSection>
         </AlphabeticTableBody>
       </AlphabeticTable>

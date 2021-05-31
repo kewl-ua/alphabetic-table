@@ -6,13 +6,11 @@ const Home = () => {
     <nav>
       <ul>
         <li>
-          <Link to="/employees">
-            Employees
-          </Link>
+          <Link to="/employees">Employees</Link>
         </li>
       </ul>
     </nav>
-  )
+  );
 };
 
 export default Home;

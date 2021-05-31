@@ -35,7 +35,7 @@ const AlphabeticEmployeeSwitcher = ({ employee }) => {
     if (event.keyCode === SPACE_KEY_CODE) {
       event.preventDefault();
       cb();
-      setIsActive(prev => !prev);
+      setIsActive((prev) => !prev);
     }
   };
 
@@ -49,7 +49,9 @@ const AlphabeticEmployeeSwitcher = ({ employee }) => {
 
   return (
     <fieldset className={classes.root}>
-      <legend className={clsx(classes.legend, { [classes.legendActive]: isActive })}>
+      <legend
+        className={clsx(classes.legend, { [classes.legendActive]: isActive })}
+      >
         {employee.firstName} {employee.lastName}
       </legend>
 
@@ -84,7 +86,7 @@ const AlphabeticEmployeeSwitcher = ({ employee }) => {
           id={`${employee.id}-deactivate`}
           onChange={handleDeactivateClick}
         />
-        
+
         <label
           tabIndex="0"
           role="radio"

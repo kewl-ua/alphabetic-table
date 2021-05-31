@@ -7,9 +7,7 @@ const AlphabeticTableBody = ({ children }) => {
 
   return (
     <tbody className={classes.root}>
-      <tr>
-        {children}
-      </tr>
+      <tr>{children}</tr>
     </tbody>
   );
 };
