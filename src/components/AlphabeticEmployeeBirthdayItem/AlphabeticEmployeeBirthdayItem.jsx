@@ -17,6 +17,7 @@ const AlphabeticEmployeeBirthdayItem = ({ month, employees }) => {
       month: bMonth,
       year: bYear,
     } = parseDateOfBirth(employee.dob);
+    const bMonthName = getMonthName(bMonth);
 
     return (
       <li className={classes.dobItem} key={employee.id}>
@@ -25,7 +26,7 @@ const AlphabeticEmployeeBirthdayItem = ({ month, employees }) => {
         </span>
         &nbsp;-&nbsp;
         <span className={classes.dob}>
-          {Number(bDay)} {getMonthName(bMonth)}, {bYear} year
+          {Number(bDay)} {bMonthName}, {bYear} year
         </span>
       </li>
     );
@@ -40,7 +41,7 @@ const AlphabeticEmployeeBirthdayItem = ({ month, employees }) => {
 };
 
 AlphabeticEmployeeBirthdayItem.propTypes = {
-  month: PropTypes.oneOf(Object.keys(MONTHS)),
+  month: PropTypes.oneOf(Object.keys(MONTHS)).isRequired,
   employees: PropTypes.arrayOf(employeeShape),
 };
 
