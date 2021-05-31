@@ -13,13 +13,13 @@ const App = () => {
   return (
     <div className="App">
       <Provider store={store}>
-        <Router>
+        {/* <Router>
           <Switch>
-            <Route path="/employees">
+            <Route path="/employees"> */}
               <Employees />
-            </Route>
+            {/* </Route>
           </Switch>
-        </Router>
+        </Router> */}
       </Provider>
     </div>
   );
