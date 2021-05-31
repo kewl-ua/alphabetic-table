@@ -1,5 +1,8 @@
 import React, { useState, useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 import clsx from 'clsx';
+
+import { selectEmployee, unselectEmployee } from '../../redux/slices/employee';
 
 import useStyles from './styles';
 
@@ -7,17 +10,18 @@ const SPACE_KEY_CODE = 32;
 
 const AlphabeticEmployeeSwitcher = ({ employee }) => {
   const classes = useStyles();
+  const dispatch = useDispatch();
   const [isActive, setIsActive] = useState(false);
 
   const handleActivateClick = useCallback(() => {
-    console.log('Activating...');
+    dispatch(selectEmployee({ id: employee.id }));
     setIsActive(true);
-  }, []);
+  }, [employee]);
 
   const handleDisactivateClick = useCallback(() => {
-    console.log('Disactivating...');
+    dispatch(unselectEmployee({ id: employee.id }));
     setIsActive(false);
-  }, []);
+  }, [employee]);
 
   const handleKeyDown = useCallback((event) => {
     if (event.keyCode === SPACE_KEY_CODE) {

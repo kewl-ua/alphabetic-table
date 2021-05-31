@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk, createSelector } from '@reduxjs/toolkit'
 
 import { EmployeeService } from '../../services';
 
-import { getEmployeesAlphaEntries } from '../../helpers/employee';
+import { getEmployeesAlphaEntries, getEmployeesMonthEntries } from '../../helpers/employee';
 
 // Async thunks
 export const fetchEmployees = createAsyncThunk(
@@ -22,14 +22,18 @@ const slice = createSlice({
   name: 'employee',
   initialState: {
     employees: [],
-    selectedEmployees: []
+    selectedEmployeesIds: []
   },
   reducers: {
     setEmployees: (state, action) => {
       state.employees = action.payload.employees;
     },
     selectEmployee: (state, action) => {
-      state.selectedEmployees.push(action.payload.employeeId);
+      state.selectedEmployeesIds.push(action.payload.id);
+    },
+    unselectEmployee: (state, action) => {
+      state.selectedEmployeesIds = state.selectedEmployeesIds
+        .filter(seId => seId !== action.payload.id);
     }
   },
   extraReducers: {
@@ -41,13 +45,26 @@ const slice = createSlice({
 
 // Selectors
 export const employeesSelector = state => state.employee.employees;
-export const selectedEmployeesSelector = state => state.employee.selectedEmployees;
+export const selectedEmployeesIdsSelector = state => state.employee.selectedEmployeesIds;
+
+// Reselectors
 export const alphabeticEmployeesSelector = createSelector(
   employeesSelector,
   employees => getEmployeesAlphaEntries(employees)
 );
-  
+export const selectedEmployeesSelector = createSelector(
+  employeesSelector,
+  selectedEmployeesIdsSelector,
+  (employees, selectedEmployeesIds) => employees
+    .filter(employee => selectedEmployeesIds.includes(employee.id))
+);
+
+export const groupedByMonthEmployeesSelector = createSelector(
+  selectedEmployeesSelector,
+  selectedEmployees => getEmployeesMonthEntries(selectedEmployees)
+);
+
 // Actions
-export const { setEmployees } = slice.actions;
+export const { setEmployees, selectEmployee, unselectEmployee } = slice.actions;
 
 export const reducer = slice.reducer;

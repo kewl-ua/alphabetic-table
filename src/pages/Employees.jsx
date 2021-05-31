@@ -12,9 +12,8 @@ import AlphabeticEmployeeBirthdayList from '../components/AlphabeticEmployeeBirt
 
 import {
   fetchEmployees,
-  employeesSelector,
-  selectedEmployeesSelector,
-  alphabeticEmployeesSelector
+  alphabeticEmployeesSelector,
+  groupedByMonthEmployeesSelector
 } from '../redux/slices/employee';
 
 const useStyles = createUseStyles({
@@ -24,13 +23,10 @@ const useStyles = createUseStyles({
 });
 
 const Employees = () => {
+  const classes = useStyles();
   const dispatch = useDispatch();
   const alphabeticEmployees = useSelector(alphabeticEmployeesSelector);
-  const employees = useSelector(employeesSelector);
-  const selectedEmployees = useSelector(selectedEmployeesSelector);
-  const classes = useStyles();
-
-  console.log('Selected employees: ', selectedEmployees);
+  const groupedByMonthEmployees = useSelector(groupedByMonthEmployeesSelector);
 
   useEffect(() => {
     dispatch(fetchEmployees());
@@ -50,12 +46,12 @@ const Employees = () => {
         </AlphabeticTableHead>
 
         <AlphabeticTableBody>
-          <AlphabeticTableSection className={classes.employeeSection}>
+          <AlphabeticTableSection width="75%">
             <AplhabeticEmployeeList alphabeticEmployees={alphabeticEmployees} />
           </AlphabeticTableSection>
 
-          <AlphabeticTableSection>
-            <AlphabeticEmployeeBirthdayList employees={employees} />
+          <AlphabeticTableSection width="25%">
+            <AlphabeticEmployeeBirthdayList employeesByMonth={groupedByMonthEmployees} />
           </AlphabeticTableSection>
         </AlphabeticTableBody>
       </AlphabeticTable>

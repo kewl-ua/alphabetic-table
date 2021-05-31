@@ -1,4 +1,5 @@
 import { DO_SWAP, DO_NOT_SWAP } from '../constants/sort';
+import { MONTHS } from '../constants/date';
 import { LETTERS } from '../constants/letters';
 
 const lastNamePredicate = (a, b) => a.lastName.toUpperCase() > b.lastName.toUpperCase()
@@ -25,20 +26,22 @@ export const getEmployeesAlphaEntries = (employees) => {
 // Date of birth
 const datePattern = /(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/;
 
+export const getMonthName = monthNumber => MONTHS[monthNumber - 1];
+
 export const parseDateOfBirth = dob => dob.match(datePattern)?.groups;
 
 export const getEmployeesMonthEntries = (employees) => {
-  const map = {};
+  const monthEmployeesBirthdaysMap = {};
 
   for (const employee of employees) {
     const month = Number(parseDateOfBirth(employee.dob).month) - 1;
     
-    if (map[month]) {
-      map[month].push(employee);
+    if (monthEmployeesBirthdaysMap[month]) {
+      monthEmployeesBirthdaysMap[month].push(employee);
     } else {
-      map[month] = [employee];
+      monthEmployeesBirthdaysMap[month] = [employee];
     }
   }
 
-  return map;
+  return Object.entries(monthEmployeesBirthdaysMap);
 };
