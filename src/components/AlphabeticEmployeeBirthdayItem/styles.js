@@ -2,7 +2,19 @@ import { createUseStyles } from 'react-jss';
 
 const useStyles = createUseStyles({
   root: {
-    fontSize: 25
+
+  },
+  month: {
+
+  },
+  dobList: {
+
+  },
+  dobItem: {
+
+  },
+  dob: {
+    
   }
 });
 

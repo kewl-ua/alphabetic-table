@@ -19,6 +19,9 @@ import {
 const useStyles = createUseStyles({
   root: {
     padding: 30
+  },
+  birthdaySection: {
+    borderLeft: '2px solid #666'
   }
 });
 
@@ -50,7 +53,7 @@ const Employees = () => {
             <AplhabeticEmployeeList alphabeticEmployees={alphabeticEmployees} />
           </AlphabeticTableSection>
 
-          <AlphabeticTableSection width="25%">
+          <AlphabeticTableSection width="25%" className={classes.birthdaySection}>
             <AlphabeticEmployeeBirthdayList employeesByMonth={groupedByMonthEmployees} />
           </AlphabeticTableSection>
         </AlphabeticTableBody>

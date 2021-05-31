@@ -30,6 +30,7 @@ const useStyles = createUseStyles({
     width: '1em',
     height: '1em',
     display: 'inline-block',
+    cursor: 'pointer',
     border: '1px solid',
     borderRadius: '50%'
   },
@@ -39,14 +40,15 @@ const useStyles = createUseStyles({
   inputWrapper: {
     display: 'inline-flex',
     alignItems: 'center',
-    marginTop: 10
+    marginTop: 10,
+    cursor: 'pointer'
   },
   input: {
     display: 'none',
     '&:checked + label': {
       backgroundColor: '#000000',
       boxShadow: 'inset 0 0 0 2px #ffffff'
-    } 
+    }
   }
 });
 

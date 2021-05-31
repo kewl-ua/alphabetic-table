@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import clsx from 'clsx';
 
@@ -43,7 +43,6 @@ const AlphabeticEmployeeSwitcher = ({ employee }) => {
     handleKeyDown(event, activate);
   };
 
-
   const handleDeactivateKeyDown = (event) => {
     handleKeyDown(event, deactivate);
   };
@@ -72,7 +71,9 @@ const AlphabeticEmployeeSwitcher = ({ employee }) => {
           htmlFor={`${employee.id}-activate`}
         />
 
-        <span className={classes.labelText}>active</span>
+        <span className={classes.labelText} onClick={handleActivateClick}>
+          active
+        </span>
       </div>
 
       <div className={classes.inputWrapper}>
@@ -92,7 +93,10 @@ const AlphabeticEmployeeSwitcher = ({ employee }) => {
           onKeyDown={handleDeactivateKeyDown}
           htmlFor={`${employee.id}-deactivate`}
         />
-        <span className={classes.labelText}>not active</span>
+
+        <span className={classes.labelText} onClick={handleDeactivateClick}>
+          not active
+        </span>
       </div>
     </fieldset>
   );

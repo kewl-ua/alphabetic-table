@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import useStyles from './styles';
 
@@ -12,4 +12,4 @@ const AlphabeticTableHeading = ({ children }) => {
   );
 };
 
-export default AlphabeticTableHeading;
+export default memo(AlphabeticTableHeading);

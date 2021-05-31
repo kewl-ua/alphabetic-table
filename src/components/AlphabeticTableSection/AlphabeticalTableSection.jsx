@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import clsx from 'clsx';
 
 import useStyles from './styles';
@@ -13,4 +13,4 @@ const AlphabeticTableSection = ({ className = '', children, ...props }) => {
   );
 };
 
-export default AlphabeticTableSection;
+export default memo(AlphabeticTableSection);
