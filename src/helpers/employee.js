@@ -6,7 +6,6 @@ export const lastNamePredicate = (a, b) =>
 export const createLettersMap = () =>
   Object.fromEntries(LETTERS.map((l) => [l, []]));
 
-// Date of birth
 export const datePattern = /(?<year>\d\d\d\d)-(?<month>\d\d)-(?<day>\d\d)/;
 
 export const getMonthName = (monthNumber) => MONTHS[monthNumber - 1];

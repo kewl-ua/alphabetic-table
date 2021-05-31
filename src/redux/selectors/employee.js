@@ -12,6 +12,13 @@ export const selectedEmployeesIdsSelector = (state) =>
   state.employee.selectedEmployeesIds;
 
 // Reselectors
+export const selectedEmployeesSelector = createSelector(
+  employeesSelector,
+  selectedEmployeesIdsSelector,
+  (employees, selectedEmployeesIds) =>
+    employees.filter((employee) => selectedEmployeesIds.includes(employee.id))
+);
+
 export const alphabeticEmployeesSelector = createSelector(
   employeesSelector,
   (employees) => {
@@ -28,20 +35,13 @@ export const alphabeticEmployeesSelector = createSelector(
   }
 );
 
-export const selectedEmployeesSelector = createSelector(
-  employeesSelector,
-  selectedEmployeesIdsSelector,
-  (employees, selectedEmployeesIds) =>
-    employees.filter((employee) => selectedEmployeesIds.includes(employee.id))
-);
-
 export const groupedByMonthEmployeesSelector = createSelector(
   selectedEmployeesSelector,
   (selectedEmployees) => {
     const monthEmployeesBirthdaysMap = {};
 
     for (const employee of selectedEmployees) {
-      const month = Number(parseDateOfBirth(employee.dob).month) - 1;
+      const month = parseDateOfBirth(employee.dob).month - 1;
 
       if (monthEmployeesBirthdaysMap[month]) {
         monthEmployeesBirthdaysMap[month].push(employee);
