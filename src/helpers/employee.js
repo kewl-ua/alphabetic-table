@@ -1,6 +1,6 @@
 import { DO_SWAP, DO_NOT_SWAP, MONTHS, LETTERS } from '../constants';
 
-const lastNamePredicate = (a, b) =>
+export const lastNamePredicate = (a, b) =>
   a.lastName.toUpperCase() > b.lastName.toUpperCase() ? DO_SWAP : DO_NOT_SWAP;
 
 export const createLettersMap = () => {
@@ -27,7 +27,7 @@ export const getEmployeesAlphaMap = (employees) => {
 };
 
 // Date of birth
-const datePattern = /(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/;
+const datePattern = /(?<year>\d\d\d\d)-(?<month>\d\d)-(?<day>\d\d)/;
 
 export const getMonthName = (monthNumber) => MONTHS[monthNumber - 1];
 
