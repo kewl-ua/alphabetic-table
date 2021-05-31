@@ -8,7 +8,7 @@ const monthsShapeEntries = MONTHS.map((month) => [
   month,
   PropTypes.arrayOf(employeeShape),
 ]);
-const monthsShapeMap = Object.fromEntries(monthsShapeEntries);
-const shape = PropTypes.shape(monthsShapeMap);
+
+const shape = PropTypes.shape(Object.fromEntries(monthsShapeEntries));
 
 export default shape;

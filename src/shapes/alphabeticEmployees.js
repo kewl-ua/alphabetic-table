@@ -8,6 +8,7 @@ const lettersEmployeesEntries = LETTERS.map((l) => [
   l,
   PropTypes.arrayOf(employeeShape),
 ]);
+
 const shape = PropTypes.shape(Object.fromEntries(lettersEmployeesEntries));
 
 export default shape;
