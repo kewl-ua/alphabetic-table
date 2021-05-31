@@ -10,11 +10,11 @@ import AlphabeticTableSection from '../components/AlphabeticTableSection';
 import AplhabeticEmployeeList from '../components/AlphabeticEmployeeList';
 import AlphabeticEmployeeBirthdayList from '../components/AlphabeticEmployeeBirthdayList';
 
+import { fetchEmployees } from '../redux/slices/employee';
 import {
-  fetchEmployees,
   alphabeticEmployeesSelector,
   groupedByMonthEmployeesSelector,
-} from '../redux/slices/employee';
+} from '../redux/selectors/employee';
 
 const useStyles = createUseStyles({
   root: {
