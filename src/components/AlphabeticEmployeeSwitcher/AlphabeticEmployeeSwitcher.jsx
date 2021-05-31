@@ -13,22 +13,40 @@ const AlphabeticEmployeeSwitcher = ({ employee }) => {
   const dispatch = useDispatch();
   const [isActive, setIsActive] = useState(false);
 
-  const handleActivateClick = useCallback(() => {
+  const activate = () => {
     dispatch(selectEmployee({ id: employee.id }));
-    setIsActive(true);
-  }, [employee]);
+  };
 
-  const handleDisactivateClick = useCallback(() => {
+  const deactivate = () => {
     dispatch(unselectEmployee({ id: employee.id }));
-    setIsActive(false);
-  }, [employee]);
+  };
 
-  const handleKeyDown = useCallback((event) => {
+  const handleActivateClick = () => {
+    activate();
+    setIsActive(true);
+  };
+
+  const handleDeactivateClick = () => {
+    deactivate();
+    setIsActive(false);
+  };
+
+  const handleKeyDown = (event, cb) => {
     if (event.keyCode === SPACE_KEY_CODE) {
       event.preventDefault();
+      cb();
       setIsActive(prev => !prev);
     }
-  }, []);
+  };
+
+  const handleActivateKeyDown = (event) => {
+    handleKeyDown(event, activate);
+  };
+
+
+  const handleDeactivateKeyDown = (event) => {
+    handleKeyDown(event, deactivate);
+  };
 
   return (
     <fieldset className={classes.root}>
@@ -50,7 +68,7 @@ const AlphabeticEmployeeSwitcher = ({ employee }) => {
           role="radio"
           aria-checked={isActive}
           className={classes.label}
-          onKeyDown={handleKeyDown}
+          onKeyDown={handleActivateKeyDown}
           htmlFor={`${employee.id}-activate`}
         />
 
@@ -62,8 +80,8 @@ const AlphabeticEmployeeSwitcher = ({ employee }) => {
           type="radio"
           checked={!isActive}
           className={classes.input}
-          id={`${employee.id}-disactivate`}
-          onChange={handleDisactivateClick}
+          id={`${employee.id}-deactivate`}
+          onChange={handleDeactivateClick}
         />
         
         <label
@@ -71,8 +89,8 @@ const AlphabeticEmployeeSwitcher = ({ employee }) => {
           role="radio"
           aria-checked={!isActive}
           className={classes.label}
-          onKeyDown={handleKeyDown}
-          htmlFor={`${employee.id}-disactivate`}
+          onKeyDown={handleDeactivateKeyDown}
+          htmlFor={`${employee.id}-deactivate`}
         />
         <span className={classes.labelText}>not active</span>
       </div>
