@@ -3,6 +3,7 @@ export const MONTHS = [
   'February',
   'March',
   'April',
+  'May',
   'June',
   'July',
   'August',
