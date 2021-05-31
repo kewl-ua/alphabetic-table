@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 
 import AlphabeticEmployeeSwitcher from '../AlphabeticEmployeeSwitcher';
@@ -9,9 +9,13 @@ import useStyles from './styles';
 
 const AlphabeticEmployeeItem = ({ letter, employees = [] }) => {
   const classes = useStyles();
-  const employeeSwitchers = employees.map((employee) => (
-    <AlphabeticEmployeeSwitcher key={employee.id} employee={employee} />
-  ));
+  const employeeSwitchers = useMemo(
+    () =>
+      employees.map((employee) => (
+        <AlphabeticEmployeeSwitcher key={employee.id} employee={employee} />
+      )),
+    [employees]
+  );
 
   return (
     <li className={classes.root}>
