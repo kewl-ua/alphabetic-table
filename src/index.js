@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import jss from 'jss';
 import preset from 'jss-preset-default';
 import jssNestedPlugin from 'jss-plugin-nested';
@@ -13,11 +13,18 @@ import reportWebVitals from './reportWebVitals';
 jss.setup(preset());
 jss.use(jssNestedPlugin());
 
-ReactDOM.render(
+const rootElement = document.getElementById('root');
+
+if (!rootElement) {
+  throw new Error('Failed to find the root element');
+}
+
+const root = createRoot(rootElement);
+
+root.render(
   <React.StrictMode>
     <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
